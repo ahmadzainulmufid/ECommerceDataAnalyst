@@ -9,41 +9,29 @@ from babel.numbers import format_currency
 sns.set(style='dark')
 # st.set_option('deprecation.showPyplotGlobalUse', False)
 
-# Gunakan path absolut
-all_data_path = r"C:\Users\Lenovo\Downloads\proyek analisis data\data\all_data.csv"
-geolocation_path = r"C:\Users\Lenovo\Downloads\proyek analisis data\data\geolocation.csv"
-
-datetime_cols = [
-    "order_approved_at", "order_delivered_carrier_date",
-    "order_delivered_customer_date", "order_estimated_delivery_date",
-    "order_purchase_timestamp", "shipping_limit_date"
-]
-
-# Baca file CSV
-all_df = pd.read_csv(all_data_path)
+# Dataset
+datetime_cols = ["order_approved_at", "order_delivered_carrier_date", "order_delivered_customer_date", "order_estimated_delivery_date", "order_purchase_timestamp", "shipping_limit_date"]
+all_df = pd.read_csv("./data/all_data.csv")
 all_df.sort_values(by="order_approved_at", inplace=True)
 all_df.reset_index(inplace=True)
 
-# Baca Geolocation Dataset
-geolocation = pd.read_csv(geolocation_path)
+# Geolocation Dataset
+geolocation = pd.read_csv('data/geolocation.csv')
 data = geolocation.drop_duplicates(subset='customer_unique_id')
 
-# Konversi kolom datetime
 for col in datetime_cols:
     all_df[col] = pd.to_datetime(all_df[col])
 
-# Hitung min dan max tanggal
 min_date = all_df["order_approved_at"].min()
 max_date = all_df["order_approved_at"].max()
-
-# Logo Image
-img_path = r"C:\Users\Lenovo\Downloads\proyek analisis data\dashboard\img_streamlit.png"
 
 # Sidebar
 with st.sidebar:
     # Title
     st.title("Ahmad Zainul Mufid")
-    st.image(img_path)
+
+    # Logo Image
+    st.image("dashboard/img_streamlit.png")
 
 
     # Date Range
