@@ -30,6 +30,5 @@ Proyek ini bertujuan untuk menganalisis data pada E-Commerce Public Dataset. Tuj
 Masuk ke direktori proyek (Local):
 
 ```shell
-cd /dashboard/
-streamlit run dashboard.py
+streamlit run app.py
 ```
