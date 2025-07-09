@@ -4,7 +4,7 @@ import matplotlib.image as mpimg
 import seaborn as sns
 import streamlit as st
 import urllib
-from main_data import DataAnalyzer, BrazilMapPlotter
+from dashboard import DataAnalyzer, BrazilMapPlotter
 from babel.numbers import format_currency
 sns.set(style='dark')
 # st.set_option('deprecation.showPyplotGlobalUse', False)
