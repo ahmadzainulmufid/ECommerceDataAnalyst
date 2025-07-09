@@ -4,7 +4,7 @@ import matplotlib.image as mpimg
 import seaborn as sns
 import streamlit as st
 import urllib
-from dashboard import DataAnalyzer, BrazilMapPlotter
+from dashboard.main_data import DataAnalyzer, BrazilMapPlotter
 from babel.numbers import format_currency
 sns.set(style='dark')
 # st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -16,7 +16,7 @@ all_df.sort_values(by="order_approved_at", inplace=True)
 all_df.reset_index(inplace=True)
 
 # Geolocation Dataset
-geolocation = pd.read_csv('data/geolocation.csv')
+geolocation = pd.read_csv('./data/geolocation.csv')
 data = geolocation.drop_duplicates(subset='customer_unique_id')
 
 for col in datetime_cols:
